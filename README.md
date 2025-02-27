@@ -1,1 +1,10 @@
-# Filtro-mediana-
+Originalmente o filtro de mediana se caracteriza como uma técnica de filtragem em grande parte usada em processamentos de imagens com o intuito de minimizar ruídos e preservar as bordas. Sua importância é caracterizada em grande parte contra o ruído sal e pimenta, substituindo os valores dos pixels pela mediana de seus respectivos valores dos pixels vizinhos, eliminando picos de intensidade sem distorcer a imagem. A técnica pode ser utilizada como aplicação em diferentes áreas, como o processamento de imagens médicas, visão computacional, pós-processamento em fotografias e entre outros.
+Funciona considerando que para cada pixel da imagem, defini-se uma vizinhança (ex: 3x3, 5x5). Bastando isso, os valores dos pixels nessa vizinhança são ordenados e o pixel central é substituído pela mediana dos valores.
+
+Em nosso código o filtro da mediana foi aplicado na função "mediana" recebendo um vetor de valores de pixels de uma janela 3x3. Os valores são ordenados usando um algoritmo de ordenação simples (Bubble Sort), e o valor mediano é retornado.
+Assumindo isso, uma nova matriz de pixels (novaImagem) é alocada para armazenar os pixels filtrados, o que faz com o que código percorra cada pixel da imagem (exceto as bordas). Para cada pixel, uma janela 3x3 de valores vizinhos é coletada e a mediana dos valores dessa janela é calculada e atribuída ao pixel correspondente da nova imagem.
+Após processar toda a imagem, a memória da imagem original é substituída pela imagem filtrada. Adotando esses métodos, a implementação passa a remover ruídos impulsivos sem borrar as bordas da imagem, mantendo seus detalhes mais nítidos em comparação com filtros de média.
+
+Entre alguns exemplos de uso é plausível citar sua utilização em pós-processamento de fotografias, já que pode restaurar imagens corrompidas por ruído digital e também pode ser utilizado em processamento de imagens médicas, já que para remover ruídos sem perder detalhes é de suma importância, como em tomografias e ressonâncias magnéticas.
+
+O algoritmo percorre os pixels internos da imagem, mas os pixels da borda não possuem uma vizinhança completa, e isso gerou uma dificuldade para a implementação do código, mas utilizamos o duplicamento para solucionar o problema.
